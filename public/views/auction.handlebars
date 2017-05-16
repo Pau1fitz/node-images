@@ -2,15 +2,29 @@
 
     <body>
         {{#each items}}
-          <article>
+          <div class="auction-item container">
 
-            <p>
-              {{description}}
-            </p>
+              <div class="row">
 
-            {{#each images}}
-                <img src='/uploads/{{this}}'/>
-            {{/each}}
-          </article>
+                  <div class="col-sm-12">
+                      <p>
+                        {{description}}
+                      </p>
+                  </div>
+
+                  {{#each images}}
+                    <div class="col-sm-6">
+                      <img class="auction-image" src='/uploads/{{this}}'/>
+                    </div>
+                  {{/each}}
+
+
+
+              </div>
+
+
+
+
+        </div>
         {{/each}}
     </body>

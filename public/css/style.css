@@ -6,7 +6,15 @@
   font-family: sackers_gothic_heavy;
   src: url("../fonts/sackers_gothic_heavy.woff");
   font-weight: normal;
-  font-style: normal; }
+  font-style: normal;
+}
+
+@font-face {
+  font-family: matrix_script;
+  src: url("../fonts/matrix_script.woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 html,
 body {
@@ -69,14 +77,10 @@ h2 {
   display: none;
 }
 
-@media (min-width: 768px) {
-  .main-container {
-    width: 100%;
-  }
+.auction-item {
+    font-family: matrix_script, sans-serif;
 }
 
-@media (min-width: 992px) {
-  .container {
-    width: 450px;
-  }
+.auction-image {
+    width: 100%;
 }
