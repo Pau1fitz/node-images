@@ -3,6 +3,13 @@ var app = express();
 var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
+var bodyParser = require('body-parser');
+
+var auctionItems = require('./auction-items.json');
+
+console.log(auctionItems)
+
+app.use(bodyParser.urlencoded());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -10,7 +17,21 @@ app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
 
+
 app.post('/upload', function(req, res){
+
+	console.log(req.body)
+
+	savePost(Date.now(), auctionItems, {
+	  images:req.body.fileNames,
+	  description: req.body.description
+	});
+
+	res.send('yeah!');
+
+});
+
+app.post('/upload-photos', function(req, res){
 
 	// create an incoming form object
 	var form = new formidable.IncomingForm();
@@ -42,30 +63,31 @@ app.post('/upload', function(req, res){
 
 });
 
-app.get('/images', function(req, res) {
-
-	var images = "/home/paulf/Desktop/gavin/public/uploads";
-	var response = '';
-
-	// Loop through all the files in the temp directory
-	fs.readdir(images, function( err, files ) {
-		if( err ) {
-			console.error( "Could not list the directory.", err );
-			process.exit( 1 );
-		}
-
-		files.forEach( function( file, index ) {
-			console.log(file);
-			console.log('resp',response)
-			response = response  + '<img src="/uploads/' + file + '"/> <br>'
-		} );
-
-		console.log('response',response)
-		res.send(response);
-	});
-
-});
 
 var server = app.listen(3000, function(){
 	console.log('Server listening on port 3000');
 });
+
+
+
+
+
+function saveJSONToFile(filename, json) {
+  // Convert the blogPosts object into a string and then save it to file
+  fs.writeFile(filename, JSON.stringify(json, null, '\t') + '\n', function(err) {
+    // If there is an error let us know
+    // otherwise give us a success message
+    if (err) {
+      throw err;
+    } else {
+      console.log('It\'s saved!');
+    }
+  });
+}
+
+function savePost(id, object, data) {
+  // Update object with new data
+  object[id] = data;
+  // Save the updated object to file
+  saveJSONToFile('auction-items.json', object);
+}

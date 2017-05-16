@@ -2,15 +2,21 @@
   outline: 0 !important;
 }
 
+@font-face {
+  font-family: sackers_gothic_heavy;
+  src: url("../fonts/sackers_gothic_heavy.woff");
+  font-weight: normal;
+  font-style: normal; }
+
 html,
 body {
   height: 100%;
-  background-color: #4791D2;
+  background-image: url(../images/bg_tile.jpg);;
 }
 
 body {
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  font-family: sackers_gothic_heavy, sans-serif;
 }
 
 .row {
@@ -18,24 +24,26 @@ body {
 }
 
 .upload-btn {
-  color: #ffffff;
-  background-color: #F89406;
+  color: #fff;
   border: none;
+  padding: 20px;
+  font-size: 16px;
+  background-color: #000;
+  font-family: sackers_gothic_heavy, sans-serif;
+}
+
+.files-uploaded {
+    list-style-type: none;
 }
 
 .upload-btn:hover,
 .upload-btn:focus,
 .upload-btn:active,
 .upload-btn.active {
-  color: #ffffff;
-  background-color: #FA8900;
+  color: #fff;
   border: none;
 }
 
-h4 {
-  padding-bottom: 30px;
-  color: #B8BDC1;
-}
 
 .glyphicon {
   font-size: 5em;
@@ -44,7 +52,6 @@ h4 {
 
 h2 {
   margin-top: 15px;
-  color: #68757E;
 }
 
 .panel {
