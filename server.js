@@ -4,30 +4,47 @@ var path = require('path');
 var formidable = require('formidable');
 var fs = require('fs');
 var bodyParser = require('body-parser');
+var exphbs = require('express-handlebars');
 
 var auctionItems = require('./auction-items.json');
 
-console.log(auctionItems)
-
 app.use(bodyParser.urlencoded());
-
 app.use(express.static(path.join(__dirname, 'public')));
+app.engine('handlebars', exphbs({
+	partialsDir:'public/views/partials'
+}));
+app.set('views', __dirname + '/public/views/');
+app.set('partials', __dirname + '/public/views/partials');
+app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res){
 	res.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
 
+app.get('/auction', function(req, res){
+
+	var listOfItems = [];
+
+	Object.keys(auctionItems).forEach(function(i) {
+  		var item = auctionItems[i];
+  		item.id = i;
+  		listOfItems.push(item);
+	});
+
+	res.render('auction', {
+		items: listOfItems
+	});
+});
+
 
 app.post('/upload', function(req, res){
-
-	console.log(req.body)
 
 	savePost(Date.now(), auctionItems, {
 	  images:req.body.fileNames,
 	  description: req.body.description
 	});
 
-	res.send('yeah!');
+	res.end('success');
 
 });
 

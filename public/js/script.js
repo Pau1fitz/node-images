@@ -3,9 +3,8 @@
     var fileNames = [];
 
     $('.upload-btn').on('click', function (){
+        $('.progress-bar').text('');
         $('#upload-input').click();
-        $('.progress-bar').text('0%');
-        $('.progress-bar').width('0%');
     });
 
     $('form').submit(function(e){
@@ -17,7 +16,8 @@
         var data = {
             description,
             fileNames
-        };
+
+        }
 
         $.ajax({
           url: '/upload',
@@ -31,6 +31,8 @@
     });
 
     $('#upload-input').on('change', function(){
+
+        fileNames = [];
 
         var files = $(this).get(0).files;
 

@@ -1,0 +1,16 @@
+{{> head}}
+
+    <body>
+        {{#each items}}
+          <article>
+
+            <p>
+              {{description}}
+            </p>
+
+            {{#each images}}
+                <img src='/uploads/{{this}}'/>
+            {{/each}}
+          </article>
+        {{/each}}
+    </body>
