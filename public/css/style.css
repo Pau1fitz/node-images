@@ -24,11 +24,8 @@ body {
 }
 
 
-.row {
-  margin-top: 80px;
-}
-
-.upload-btn {
+.upload-btn,
+.submit-images-btn {
   color: #fff;
   border: none;
   padding: 20px;
@@ -37,17 +34,9 @@ body {
   font-family: sackers_gothic_heavy, sans-serif;
 }
 
-.submit-images-btn {
-    color: #fff;
-    border: none;
-    padding: 20px;
-    font-size: 16px;
-    background-color: #000;
-    font-family: sackers_gothic_heavy, sans-serif;
-}
-
 .files-uploaded {
     list-style-type: none;
+	padding: 10px 0;
 }
 
 .upload-btn:hover,
@@ -58,11 +47,6 @@ body {
   border: none;
 }
 
-
-.glyphicon {
-  font-size: 5em;
-  color: #9CA3A9;
-}
 
 h2 {
   margin-top: 15px;
@@ -82,5 +66,32 @@ h2 {
 }
 
 .auction-image {
-    width: 100%;
+	width: 100%;
+}
+
+.section-container {
+	padding: 20px;
+	border-bottom: 1px solid #000;
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.progress-bar {
+	background-color: #000;
+}
+
+.remove-file {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.file-name {
+	display: inline-block;
+}
+
+.auction-description {
+	height: 100px;
+	display: block;
+	width: 100%;
+	margin-bottom: 20px;
 }

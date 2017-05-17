@@ -18,7 +18,7 @@ app.set('partials', __dirname + '/public/views/partials');
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res){
-	res.sendFile(path.join(__dirname, 'public/views/index.html'));
+	res.render('index')
 });
 
 app.get('/auction', function(req, res){
